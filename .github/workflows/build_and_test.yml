@@ -4,8 +4,8 @@ on:
     workflow_dispatch:
 
 jobs:
-  build_and_test
-    runs-on: ubuntu-latest
+  build_and_test:
+    runs: ubuntu-latest
 
     steps:
         - uses: actions/checkout@v4
