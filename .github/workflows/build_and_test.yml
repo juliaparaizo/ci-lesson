@@ -1,25 +1,26 @@
 name: build-and-test
 
 on:
-    workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   build_and_test:
-    runs: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
-        - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-        - name: setup
+      - name: Setup Python
         uses: actions/setup-python@v3
         with:
-            python-version: 3.11
+          python-version: 3.11
 
-        - name: install
+      - name: Install dependencies
         run: |
-            python3 -m pip3 install --upgrade pip3
-            pip install pytest
+          python -m pip install --upgrade pip
+          pip install pytest
 
-        - name: test
+      - name: Run tests
         run: |
           pytest -v tests/
